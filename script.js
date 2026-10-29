@@ -1,4 +1,4 @@
-const portfolioName = "Your Name";
+const portfolioName = "Manish Sheoran";
 const portfolioEmail = "your-email@example.com";
 
 const brandName = document.querySelector("#brand-name");
@@ -31,6 +31,7 @@ brandMark.textContent = portfolioName
 emailLink.href = `mailto:${portfolioEmail}`;
 
 const header = document.querySelector(".site-header");
+const scrollProgressBar = document.querySelector("#scroll-progress-bar");
 const menuToggle = document.querySelector("#menu-toggle");
 const siteNav = document.querySelector("#site-nav");
 const navLinks = [...document.querySelectorAll(".nav-link")];
@@ -56,6 +57,10 @@ window.addEventListener("resize", () => {
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 12);
+
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+  scrollProgressBar.style.transform = `scaleX(${progress})`;
 }
 
 updateHeader();
